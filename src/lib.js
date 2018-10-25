@@ -17,9 +17,26 @@ const makeCounterFromZero = function(){
   }
 }
 
-const makeDeltaTracker = undefined;
+const makeDeltaTracker = function(input){
+  let init = {old:input,delta:0,new:input};
+  return function(delta){
+    if(delta == null)return init;
+    init.delta = delta ;
+    init.old = init.new;
+    init.new = init.old + delta;
+    return init;
+  }
+}
 const makeFiboGenerator = undefined;
-const makeCycler = undefined;
+
+const makeCycler = undefined/*= function(input){
+  return function(){
+    let result = input.shift();
+    input.push(result);
+    return result;
+  }
+}*/
+
 
 const curry = function(sum,input){
   return function(firstElement,secondElement){
