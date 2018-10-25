@@ -10,7 +10,6 @@ const makeCounterFromN = function(number){
   }
 }
 
-
 const makeCounterFromZero = function(){
   let number = 0;
   return function(){
@@ -22,7 +21,12 @@ const makeDeltaTracker = undefined;
 const makeFiboGenerator = undefined;
 const makeCycler = undefined;
 const curry = undefined;
-const compose = undefined;
+
+const compose = function(firstFuncRef,secondFuncRef){
+  return function(arg1,arg2){
+    return firstFuncRef(secondFuncRef(arg1,arg2));
+  }
+}
 
 exports.makeConstant=makeConstant;
 exports.makeCounterFromZero=makeCounterFromZero;
