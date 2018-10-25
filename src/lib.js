@@ -20,7 +20,12 @@ const makeCounterFromZero = function(){
 const makeDeltaTracker = undefined;
 const makeFiboGenerator = undefined;
 const makeCycler = undefined;
-const curry = undefined;
+
+const curry = function(sum,input){
+  return function(firstElement,secondElement){
+    return sum(input,firstElement,secondElement);
+  }
+}
 
 const compose = function(firstFuncRef,secondFuncRef){
   return function(arg1,arg2){
