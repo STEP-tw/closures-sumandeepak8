@@ -28,7 +28,7 @@ const makeDeltaTracker = function(input){
   }
 }
 
-const makeFiboGenerator = function(){
+const makeFiboGenerator = undefined;/*function(){
   let lastNumber = 1;
   let number = 0;
   let lastSecondNumber = 0;
@@ -41,7 +41,7 @@ const makeFiboGenerator = function(){
     return number;
   }
 }
-
+*/
 
 const makeCycler = function(input){
   let temp = input.slice(0,input.length);
