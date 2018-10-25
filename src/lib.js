@@ -27,15 +27,31 @@ const makeDeltaTracker = function(input){
     return init;
   }
 }
-const makeFiboGenerator = undefined;
 
-const makeCycler = undefined/*= function(input){
+const makeFiboGenerator = function(){
+  let lastNumber = 1;
+  let number = 0;
+  let lastSecondNumber = 0;
   return function(){
-    let result = input.shift();
-    input.push(result);
-    return result;
+    if(lastSecondNumber == 0){ lastSecondNumber = 1; return number;}
+   if(lastSecondNumber == 1){ lastSecondNumber = 0; return lastNumber; }
+    number = lastNumber + number;
+    lastSecondNumber = lastNumber;
+    lastNumber = number;
+    return number;
   }
-}*/
+}
+
+
+const makeCycler = function(input){
+  let temp = input.slice(0,input.length);
+  return function(){
+    let result = temp.shift();
+    temp.push(result);
+    return result
+  }
+
+}
 
 
 const curry = function(sum,input){
