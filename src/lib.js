@@ -28,29 +28,30 @@ const makeDeltaTracker = function(input){
   }
 }
 
-const makeFiboGenerator = undefined;/*function(){
+const makeFiboGenerator = function(firstDigit,secondDigit){
   let lastNumber = 1;
-  let number = 0;
-  let lastSecondNumber = 0;
+  let secondLastNumber = 0;
+  let number;
+  let count = 1;
+  if(firstDigit >0 && secondDigit >0){lastNumber = secondDigit;secondLastNumber = firstDigit;}
+  if(firstDigit >0 && !secondDigit >=1){lastNumber = firstDigit}
   return function(){
-    if(lastSecondNumber == 0){ lastSecondNumber = 1; return number;}
-   if(lastSecondNumber == 1){ lastSecondNumber = 0; return lastNumber; }
-    number = lastNumber + number;
-    lastSecondNumber = lastNumber;
+    if(count == 1){ count++; return secondLastNumber;}
+   if(count == 2){ count++; return lastNumber; }
+    number = lastNumber + secondLastNumber;
+    secondLastNumber = lastNumber;
     lastNumber = number;
     return number;
   }
 }
-*/
 
 const makeCycler = function(input){
   let temp = input.slice(0,input.length);
   return function(){
     let result = temp.shift();
     temp.push(result);
-    return result
+    return result;
   }
-
 }
 
 
