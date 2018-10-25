@@ -24,7 +24,12 @@ const makeDeltaTracker = function(input){
     init.delta = delta ;
     init.old = init.new;
     init.new = init.old + delta;
-    return init;
+    let initCopy = {};
+    initCopy["old"] = init.old;
+    initCopy["delta"] = init.delta;
+    initCopy["new"] = init.new;
+
+    return initCopy;
   }
 }
 
