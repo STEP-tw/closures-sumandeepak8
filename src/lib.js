@@ -20,11 +20,17 @@ const makeCounterFromZero = function(){
 const makeDeltaTracker = function(input){
   let init = {old:input,delta:0,new:input};
   return function(delta){
-    if(delta == null)return init;
+    let initCopy = {};
+    if(delta == null){
+    initCopy["old"] = init.old;
+    initCopy["delta"] = init.delta;
+    initCopy["new"] = init.new;
+
+    return initCopy;
+    }
     init.delta = delta ;
     init.old = init.new;
     init.new = init.old + delta;
-    let initCopy = {};
     initCopy["old"] = init.old;
     initCopy["delta"] = init.delta;
     initCopy["new"] = init.new;
