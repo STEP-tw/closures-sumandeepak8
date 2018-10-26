@@ -19,22 +19,12 @@ const makeCounterFromZero = function(){
 
 const makeDeltaTracker = function(input){
   let init = {old:input,delta:0,new:input};
-  return function(delta){
-    let initCopy = {};
-    if(delta == null){
-    initCopy["old"] = init.old;
-    initCopy["delta"] = init.delta;
-    initCopy["new"] = init.new;
-
-    return initCopy;
-    }
-    init.delta = delta ;
-    init.old = init.new;
-    init.new = init.old + delta;
-    initCopy["old"] = init.old;
-    initCopy["delta"] = init.delta;
-    initCopy["new"] = init.new;
-
+  let initCopy  = {};
+    Object.assign(initCopy,init);
+  return function(delta = 0){
+    initCopy.delta = delta ;
+    initCopy.old = initCopy.new;
+    initCopy.new = initCopy.old + delta;
     return initCopy;
   }
 }
